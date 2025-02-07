@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Resources </title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+            color: #333;
+        }
+        
+        header {
+            /* background: linear-gradient(135deg, #1d6386, #00a8ff); */
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #000;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        
+        /* .menu {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            z-index: 1;
+        }
+        
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .menu-items {
+            display: none;
+            background: #333;
+            color: white;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            list-style: none;
+            padding: 0;
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .menu-items.active {
+            display: block;
+        }
+        
+        .menu-items .close-icon {
+            text-align: right;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            background: #444;
+        }
+        
+        .menu-items li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+        
+        .menu-items li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .menu-items li:hover {
+            background: #555;
+        } */
+        
+        .toggle-dark-mode {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: white;
+            color: #2c3e50;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .toggle-dark-mode:hover {
+            background: #ddd;
+        }
+        
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        
+        .resources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dark-mode .resource-card {
+            background: #222;
+            color: white;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+        
+        .resource-card button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .news-wrapper {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .news-container {
+            display: flex;
+            width: 400%;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: pan-x;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-slide {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 50px;
+            flex-shrink: 0;
+            background-color: #fff;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        
+        .news-slide img {
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .dark-mode .news-slide {
+            background: #222;
+            color: white;
+        }
+        
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .prev-button {
+            left: 10px;
+        }
+        
+        .next-button {
+            right: 10px;
+        }
+        
+        .home-button {
+            padding: 10px 20px;
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .men {
+            font-size: 20px;
+        }
+        .navbar {
+    display: flex;
+    gap: 25px;
+    /* font-size: 25px; */
+    background-color: #333;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+.navbar a.active,
+.navbar a:hover {
+    background: #00a8ff;
+    color: #000;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- <div class="header">
+        <div class="menu">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <ul class="menu-items" id="menu">
+                <li class="close-icon" onclick="toggleMenu()">&times;</li>
+                <li>
+                    <a href="homePage.html">
+                        <div class="men">Home</div>
+                    </a>
+                </li>
+                <li><a href="Essential_Features_1.html">Essential Features</a></li>
+                <li><a href="Student_Support_1.html">Student Support</a></li>
+                <li><a href="academic_Resources.html">Academic Support</a></li>
+                <li><a href="Events.html">Events and Activities</a></li>
+                <li><a href="mess_and_food.html">Mess and Food</a></li>
+                <li><a href="contact_1.html">Contact and Communication</a></li>
+            </ul>
+        </div>
+        📚 Academic Resources | College Hub
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </div> -->
+    <header><h1>Academic Support</h1></header>
+    <header class="navbar">
+        <nav class="navbar"> <a href="homePage.html">Home</a>
+            <a href="Essential_features_1.html" >Essential Features</a>
+            <a href="Student_Support_1.html">Student Support</a>
+            <a href="#" class="active">Academic Support</a>
+            <a href="Events.html">Events and Activities</a>
+            <a href="mess_and_food.html">Mess and Food</a>
+            <a href="contact_1.html" >Contact and Communication</a></nav>
+    </header>
+
+
+    <div class="resources-container">
+        <div class="resource-card">
+            <h3>📖 Examination Info</h3>
+            <p>Access a vast collection of free academic e-books.</p><button>Access</button>
+        </div>
+        <div class="resource-card">
+            <h3>🎓 Scholarships</h3>
+            <p>Explore free and paid online courses from top universities.</p><button>Enroll</button>
+        </div>
+        <div class="resource-card">
+            <h3>📜 Internships and Placements</h3>
+            <p>Find peer-reviewed research papers and journals.</p><button>Browse</button>
+        </div>
+        <div class="resource-card">
+            <h3>🧑‍🏫 New Job Applications</h3>
+            <p>Connect with academic mentors and tutors.</p><button>Get Help</button>
+        </div>
+        <div class="resource-card">
+            <h3>📖 Examination Info</h3>
+            <p>Access a vast collection of free academic e-books.</p><button>Access</button>
+        </div>
+        <div class="resource-card">
+            <h3>🎓 Scholarships</h3>
+            <p>Explore free and paid online courses from top universities.</p><button>Enroll</button>
+        </div>
+        <div class="resource-card">
+            <h3>📜 Internships and Placements</h3>
+            <p>Find peer-reviewed research papers and journals.</p><button>Browse</button>
+        </div>
+        <div class="resource-card">
+            <h3>🧑‍🏫 New Job Applications</h3>
+            <p>Connect with academic mentors and tutors.</p><button>Get Help</button>
+        </div>
+    </div>
+    </div>
+    <div class="news-wrapper">
+        <div class="news-container" id="news-container">
+            <div class="news-slide"><img src="https://images.shiksha.com/mediadata/images/1587471913php47MK0A_1280x960.jpg" alt="News 1">
+                <div class="news-content">
+                    <h2>News Title 1</h2>
+                    <p>Description of first news article.</p>
+                </div>
+            </div>
+            <div class="news-slide"><img src="https://www.rgukt.ac.in/assets/images/slides/slide-7.jpg" alt="News 2">
+                <div class="news-content">
+                    <h2>News Title 2</h2>
+                    <p>Description of second news article.</p>
+                </div>
+            </div>
+            <div class="news-slide"><img src="https://th.bing.com/th/id/R.ededf567c91c9552b779bd2758f0d415?rik=%2fazKCQxQ6P3X1Q&riu=http%3a%2f%2fwww.rgukt.in%2fnewsite%2fimages%2fnuzlogo.png&ehk=8b6bJ2VXAsVz%2b9ZZTQTGpes2RyEhTo%2f6HJo3kyNi%2bb4%3d&risl=&pid=ImgRaw&r=0" alt="News 3">
+                <div class="news-content">
+                    <h2>News Title 3</h2>
+                    <p>Description of third news article.</p>
+                </div>
+            </div>
+            <div class="news-slide"><img src="https://i.ytimg.com/vi/ujtKe16hCn0/maxresdefault.jpg" alt="News 4">
+                <div class="news-content">
+                    <h2>News Title 4</h2>
+                    <p>Description of fourth news article.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="nav-button prev-button" onclick="prevSlide()">&#8249;</button>
+        <button class="nav-button next-button" id="next-button" onclick="nextSlide()">&#8250;</button>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelectorAll('.resource-card').forEach(card => card.classList.toggle('dark-mode'));
+            document.querySelectorAll('.news-slide').forEach(slide => slide.classList.toggle('dark-mode'));
+        }
+
+        const slides = document.querySelectorAll('.news-slide');
+        const container = document.getElementById('news-container');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            container.style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+    </script>
+
+
+    <div class="footer">
+        &copy; 2025 RGUKT Nuzvid | All Rights Reserved
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.classList.remove("active");
+            }
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+
+</body>
+
+</html>
