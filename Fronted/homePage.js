@@ -17,7 +17,7 @@ function updateCarousel() {
         dot.classList.toggle('active', index === currentIndex);
     });
 }
-
+//move to next slide
 function nextSlide() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel();
