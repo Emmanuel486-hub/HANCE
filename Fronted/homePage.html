@@ -7,69 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College News Portal</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="homePage.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="homePage.css">
-    <!-- <script src="homePage.js"></script> -->
+
     <style>
-        .profile-btn {
-            background: #00a8ff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .profile-btn:hover {
-            background: #005f9f;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 80%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .login-btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            background: #00a8ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        
-        .login-btn:hover {
-            background: #005f9f;
-        }
+
     </style>
 </head>
 
@@ -82,86 +28,75 @@
             <button><i class="fas fa-search"></i></button>
             <!-- <button><i class="fal fa-search"></i></button> -->
         </div>
-        <!-- <div id="profile-card" class="card" style="display:none; max-width: 400px; margin-top: 20px;">
-            <div class="card-body text-center">
-                <img id="profilePicLarge" src="" alt="Profile Picture" class="rounded-circle" width="100" height="100">
-                <h5 id="profileName" class="mt-2"></h5>
-                <p id="profileEmail"></p>
-                <p id="profilePhone"></p>
-                <button class="btn btn-danger btn-logout" id="signOutBtn">Sign Out</button>
-            </div>
+
+        <!-- Navbar -->
+        <div class="navbar">
+            <button class="profile-button" onclick="togglePopup()">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-pic">
+            <a href="login.html" class="profile-name" id="profileLink">Login or Sign Up</a>
+        </button>
         </div>
+
+        <!-- Popup Profile -->
+        <div class="popup-container" id="profilePopup">
+            <button class="close-btn" onclick="togglePopup()">&times;</button>
+            <img src="https://via.placeholder.com/80" class="profile-pic" alt="Profile Picture">
+            <p class="profile-name">John Doe</p>
+            <br>
+            <p class="profile-mail">johndoe@example.com</p>
+            <br>
+            <a id="profile_logout"><button class="logcon">Logout</button></a>
+        </div>
+
         <script>
-            // Update UI on login
-            function updateUI(user) {
-                // Show the profile card with user details
-                document.getElementById('profile-card').style.display = 'block';
-
-                // Update profile picture and details
-                document.getElementById('profilePicLarge').src = user.photoURL;
-                document.getElementById('profileName').textContent = user.displayName;
-                document.getElementById('profileEmail').textContent = user.email;
-                document.getElementById('profilePhone').textContent = user.phoneNumber ? user.phoneNumber : "No phone linked";
-
-                // Handle sign-out button
-                document.getElementById('signOutBtn').addEventListener('click', function() {
-                    firebase.auth().signOut().then(() => {
-                        document.getElementById('profile-card').style.display = 'none'; // Hide profile card after sign-out
-                        location.reload(); // Reload the page after sign-out
-                    }).catch((error) => {
-                        console.error("Error during sign-out:", error);
+            function updateProfileUI(user) {
+                if (user) {
+                    // Update all profile picture elements
+                    document.querySelectorAll(".profile-pic").forEach(el => {
+                        el.src = user.photoURL || "https://via.placeholder.com/80";
                     });
-                });
-            }
-        </script>
-        <script>
-            // Update UI on login
-            function updateUI(user) {
-                // Show the profile card with user details
-                document.getElementById('profile-card').style.display = 'block';
 
-                // Update profile picture and details
-                document.getElementById('profilePicLarge').src = user.photoURL;
-                document.getElementById('profileName').textContent = user.displayName;
-                document.getElementById('profileEmail').textContent = user.email;
-                document.getElementById('profilePhone').textContent = user.phoneNumber ? user.phoneNumber : "No phone linked";
-
-                // Handle sign-out button
-                document.getElementById('signOutBtn').addEventListener('click', function() {
-                    firebase.auth().signOut().then(() => {
-                        document.getElementById('profile-card').style.display = 'none'; // Hide profile card after sign-out
-                        location.reload(); // Reload the page after sign-out
-                    }).catch((error) => {
-                        console.error("Error during sign-out:", error);
+                    // Update all profile name elements
+                    document.querySelectorAll(".profile-name").forEach(el => {
+                        el.textContent = user.displayName || "John Doe";
                     });
-                });
-            }
-        </script> -->
 
-        <div class="profile-logo">
-            <!-- <a href="index.html"> -->
-            <img src="data:image/png;base64,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"
-                alt="Profile">
-        </div>
-        <br>
-        <div class="modal" id="loginOptionsModal">
-            <div class="modal-content">
-                <h2>Login Options</h2>
-                <button class="login-btn">Login with Email</button>
-                <button class="login-btn">Login with Google</button>
-                <button class="login-btn">Login with Facebook</button>
-                <button class="login-btn" onclick="closeLoginModal()">Close</button>
-            </div>
-        </div>
-        <script>
-            document.getElementById('profileButton').addEventListener('click', function() {
-                document.getElementById('loginOptionsModal').style.display = 'flex';
+                    // Update email inside the popup
+                    document.querySelector(".profile-mail").textContent = user.email || "johndoe@example.com";
+                    // Enable popup and remove login link
+                    let profileLink = document.getElementById("profileLink");
+                    profileLink.removeAttribute("href");
+                    profileLink.setAttribute("onclick", "togglePopup()");
+                } else {
+                    // Hide the popup completely if not logged in
+                    popup.style.display = "none"; // Hide popup if user is not logged in
+                }
+            }
+
+            // Load user data from localStorage
+            let user = JSON.parse(localStorage.getItem("user"));
+            console.log(user);
+
+            if (user) {
+                updateProfileUI(user);
+            }
+
+            function togglePopup() {
+                let popup = document.getElementById('profilePopup');
+                popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+            }
+
+            // Logout Function
+            document.getElementById('profile_logout').addEventListener('click', () => {
+                document.getElementById('profilePopup').style.display = 'none';
+                localStorage.removeItem("user");
+                updateProfileUI(null); // Reset UI after logout
+                window.location.reload();
             });
-
-            function closeLoginModal() {
-                document.getElementById('loginOptionsModal').style.display = 'none';
-            }
         </script>
+        </a>
+        <br>
+
 
         <!-- <p class="login">Login<br>or<br>Sign Up</p> -->
 
@@ -188,19 +123,10 @@
 
     <section class="breaking-news ">
         <span>Breaking News</span>
-        <marquee><span class="blinking-text New ">New</span>P1 & P2 Remidial examination time table..&nbsp;&nbsp;|&nbsp;&nbsp;President and Vice-President selections are going on in CSE Department..</marquee>
+        <marquee style="z-index: 10;"><span class="blinking-text New ">New</span>P1 & P2 Remidial examination time table..&nbsp;&nbsp;|&nbsp;&nbsp;President and Vice-President selections are going on in CSE Department..</marquee>
     </section>
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <!-- <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Image Carousel</title>
-        <style>
 
-        </style>
-    </head> -->
 
     <body>
         <div class="carousel">
@@ -273,166 +199,105 @@
         </script>
     </body>
 
-    </html>
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
-    <!-- <div class="carousel-container ">
-        <div class="carousel ">
-            <div class="carousel-slide ">
-                <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Slide 1 ">
-                <div class="slide-number ">1/3</div>
-            </div>
-            <div class="carousel-slide ">
-                <img src="https://images.pexels.com/photos/3204950/pexels-photo-3204950.jpeg?auto=compress&cs=tinysrgb&w=600" alt=" Slide 2 ">
-                <div class="slide-number ">2/3</div>
-            </div>
+</html>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+<div class="container ">
 
-            <div class="carousel-slide ">
-                <img src="https://images.deepai.org/chat-style-image/410059517bd848b9b8b893c151ca9a31/output.jpg" alt=" Slide 3 ">
-                <div class="slide-number ">3/3</div>
-            </div>
-            <div class="carousel-slide ">
-                <img src="https://images.deepai.org/chat-style-image/410059517bd848b9b8b893c151ca9a31/output.jpg" alt=" Slide 3 ">
-                <div class="slide-number ">3/3</div>
-            </div>
-        </div>
-        <div class="dots-container ">
-            <div class="dot active "></div>
-            <div class="dot "></div>
-            <div class="dot "></div>
-            <div class="dot "></div>
-        </div>
-    </div>
- -->
-
-    <div class="container ">
-
-        <div class="main-content ">
+    <div class="main-content ">
 
 
-            <section class="featured-news ">
-                <article>
-                    <a href="news.html "> <img src="https://tse2.mm.bing.net/th?id=OIP.7BnX1uEfYjDy9ue3vzPV9QHaDj&w=227&h=227&c=7 " alt="News Image ">
+        <section class="featured-news ">
+            <article>
+                <a href="news.html "> <img src="https://tse2.mm.bing.net/th?id=OIP.7BnX1uEfYjDy9ue3vzPV9QHaDj&w=227&h=227&c=7 " alt="News Image ">
 
-                        <h2>In August 2024, there was a notable increase in diarrhea cases among students on campus.</h2>
-                    </a>
-                </article>
-                <article>
-                    <a href="news.html "> <img src=" https://tse2.mm.bing.net/th?id=OIP.qR7wzEUnlj5_laS-erY0iwHaFj&w=355&h=355&c=7 " alt="News Image ">
+                    <h2>In August 2024, there was a notable increase in diarrhea cases among students on campus.</h2>
+                </a>
+            </article>
+            <article>
+                <a href="news.html "> <img src=" https://tse2.mm.bing.net/th?id=OIP.qR7wzEUnlj5_laS-erY0iwHaFj&w=355&h=355&c=7 " alt="News Image ">
 
-                        <h2>Catering Services Suspension: Following the health concerns, the state government suspended the services of Fine Catering Services.
-                        </h2>
-                    </a>
-                </article>
-                <article>
-                    <a href="news.html "> <img src="https://tse1.mm.bing.net/th?id=OIP.hWRy4tz-WGbR9gDtNKpdBwHaEK&w=266&h=266&c=7" alt="News Image "> X
-                        <h2>In January 2024, the Performing Arts Department of RGUKT Nuzvid secured first place in the folk song group category.</h2>
-                    </a>
-                </article>
-            </section>
-            <br>
-            <section class="featured-news ">
+                    <h2>Catering Services Suspension: Following the health concerns, the state government suspended the services of Fine Catering Services.
+                    </h2>
+                </a>
+            </article>
+            <article>
+                <a href="news.html "> <img src="https://tse1.mm.bing.net/th?id=OIP.hWRy4tz-WGbR9gDtNKpdBwHaEK&w=266&h=266&c=7" alt="News Image "> X
+                    <h2>In January 2024, the Performing Arts Department of RGUKT Nuzvid secured first place in the folk song group category.</h2>
+                </a>
+            </article>
+        </section>
+        <br>
+        <section class="featured-news ">
 
-                <article>
-                    <a href="news.html "> <img src="https://tse2.mm.bing.net/th?id=OIP.qR7wzEUnlj5_laS-erY0iwHaFj&w=355&h=355&c=7" alt="News Image "> X
-                        <h2>Diarrhea Cases: In August 2024, there was an increase in diarrhea cases among students. </h2>
-                    </a>
-                </article>
-                <article>
-                    <a href="news.html "> <img src="https://tse4.mm.bing.net/th?id=OIP.izRJJhMVg1qjjKA2wf9P6wHaDt&w=237&h=237&c=7 " alt="News Image "> X
-                        <h2>Food Quality Concerns: In September 2024, officials inspected the RGUKT Nuzvid IIIT campus following student complaints about poor-quality food and unhygienic conditions.
-                        </h2>
-                    </a>
-                </article>
-                <article>
-                    <a href="news.html "> <img src="https://tse2.mm.bing.net/th?id=OIP.nenHi66zFstHROoTGbahRwHaEK&w=266&h=266&c=7 " alt="News Image "> X
-                        <h2>IoT GrandExpo '23: In April 2023, RGUKT-Nuzvid students showcased approximately 200 projects on smart devices. </h2>
-                    </a>
-                </article>
+            <article>
+                <a href="news.html "> <img src="https://tse2.mm.bing.net/th?id=OIP.qR7wzEUnlj5_laS-erY0iwHaFj&w=355&h=355&c=7" alt="News Image "> X
+                    <h2>Diarrhea Cases: In August 2024, there was an increase in diarrhea cases among students. </h2>
+                </a>
+            </article>
+            <article>
+                <a href="news.html "> <img src="https://tse4.mm.bing.net/th?id=OIP.izRJJhMVg1qjjKA2wf9P6wHaDt&w=237&h=237&c=7 " alt="News Image "> X
+                    <h2>Food Quality Concerns: In September 2024, officials inspected the RGUKT Nuzvid IIIT campus following student complaints about poor-quality food and unhygienic conditions.
+                    </h2>
+                </a>
+            </article>
+            <article>
+                <a href="news.html "> <img src="https://tse2.mm.bing.net/th?id=OIP.nenHi66zFstHROoTGbahRwHaEK&w=266&h=266&c=7 " alt="News Image "> X
+                    <h2>IoT GrandExpo '23: In April 2023, RGUKT-Nuzvid students showcased approximately 200 projects on smart devices. </h2>
+                </a>
+            </article>
 
-            </section>
-            <a href="Advertisment.html">
-                <div class="advertisement ">For Advertisement</div>
-            </a>
-        </div>
-
-        <aside class="sidebar ">
-            <section class="trending-news ">
-                <h3>Trending News</h3>
-                <div class="tredn1 ">
-                    <article>
-
-                        <a href="https://teckzite.org/ "><img src="data:image/jpeg;base64,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"
-                                alt=" Trending "></a>
-                        <p style="color:rgb(31, 30, 30);">Teckzite is an annual national-level techno-management fest celebrated at RGUTKT Nuzvid. Join us for a thrilling experience with innovation, technology,</p>
-                    </article>
-                </div>
-                <article>
-                    <a href="https://www.instagram.com/cygnus_2k25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="> <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7wJ7SiieqJWCZuH_wAWFHO-YEYi4juymuLg&s " alt="Cygnus "></a>
-                    <p style="color:rgb(31, 30, 30);">Cygnus is a cultural fest happens in RGUKT Nuzvid...It is considered as Annual fest in RGUKT Nuzvid</p>
-                </article>
-            </section>
-        </aside>
+        </section>
+        <a href="Advertisment.html">
+            <div class="advertisement ">For Advertisement</div>
+        </a>
     </div>
 
-    <footer class="footer ">
-        <p>&copy; 2025 College News Portal. All Rights Reserved.</p>
-    </footer>
-    <!-- <script>
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const totalSlides = slides.length;
-        const carousel = document.querySelector('.carousel');
-        const dots = document.querySelectorAll('.dot');
+    <aside class="sidebar ">
+        <section class="trending-news ">
+            <h3>Trending News</h3>
+            <div class="tredn1 ">
+                <article>
 
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    <a href="https://teckzite.org/ "><img src="data:image/jpeg;base64,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"
+                            alt=" Trending "></a>
+                    <p style="color:rgb(31, 30, 30);">Teckzite is an annual national-level techno-management fest celebrated at RGUTKT Nuzvid. Join us for a thrilling experience with innovation, technology,</p>
+                </article>
+            </div>
+            <article>
+                <a href="https://www.instagram.com/cygnus_2k25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="> <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7wJ7SiieqJWCZuH_wAWFHO-YEYi4juymuLg&s " alt="Cygnus "></a>
+                <p style="color:rgb(31, 30, 30);">Cygnus is a cultural fest happens in RGUKT Nuzvid...It is considered as Annual fest in RGUKT Nuzvid</p>
+            </article>
+        </section>
+    </aside>
+</div>
 
-            // Update Slide Number
-            document.querySelectorAll('.slide-number').forEach((el, index) => {
-                el.textContent = `${index + 1}/${totalSlides}`;
-            });
+<!-- //popup button -->
 
-            // Update Dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateCarousel();
-        }
+<footer class="footer ">
+    <p>&copy; 2025 College News Portal. All Rights Reserved.</p>
+</footer>
 
-        // Auto-scroll every 2 seconds, ensuring proper centering
-        setInterval(() => {
-            nextSlide();
-        }, 2500); // Slide transition + 2 seconds pause
 
-        // Dots click event
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
-            });
-        });
-    </script> -->
 
-</body>
+</html>
+
+</html>
 
 </html>
