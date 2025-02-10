@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events and Activities</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+            color: #333;
+        }
+        
+        header {
+            /* background: linear-gradient(135deg, #1d6386, #00a8ff); */
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #000;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        section {
+            padding: 50px 20px;
+        }
+        
+        
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 30px 60px;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .collage-btn {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+        }
+        
+        .sports-btn {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+        }
+        
+        .strikes-btn {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
+        }
+        
+        .image {
+            width: 800px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #00a8ff;
+            color: white;
+            font-size: 1.1em;
+        }
+        
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .menu-items {
+            display: none;
+            background: #333;
+            color: white;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            list-style: none;
+            padding: 0;
+            width: 150px;
+        }
+        
+        .menu-items .close-icon {
+            text-align: right;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            background: #444444;
+        }
+        
+        .menu-items li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+        
+        .menu-items li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .menu-items li:hover {
+            background: #555;
+        }
+        .navbar {
+    display: flex;
+    gap: 20px;
+    /* font-size: 25px; */
+    background-color: #333;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+.navbar a.active,
+.navbar a:hover {
+    background: #00a8ff;
+    color: #000;
+}
+    </style>
+</head>
+
+<body>
+    <header><h1>EVENTS AND ACTIVITIES</h1></header>
+    <header class="navbar">
+        <nav class="navbar"> <a href="homePage.html">Home</a>
+            <a href="Essential_features_1.html" >Essential Features</a>
+            <a href="Student_Support_1.html">Student Support</a>
+            <a href="Academic_Support.html">Academic Support</a>
+            <a href="#" class="active">Events and Activities</a>
+            <a href="mess_and_food.html">Mess and Food</a>
+            <a href="contact_1.html" >Contact and Communication</a></nav>
+    </header>
+    <main>
+        
+        
+
+        <script>
+            function toggleMenu() {
+                var menu = document.getElementById("menu");
+                if (menu.style.display === "block") {
+                    menu.style.display = "none";
+                } else {
+                    menu.style.display = "block";
+                }
+            }
+
+            document.addEventListener("click", function(event) {
+                var menu = document.getElementById("menu");
+                var menuIcon = document.querySelector(".menu-icon");
+                if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                    menu.style.display = "none";
+                }
+            });
+        </script>
+        <div class="button-container">
+            <button class="btn collage-btn">College Events</button>
+            <div>
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD_6XZsqpU6WZUGoxNO5MSfa5pMn2t_K3PqQ&s " alt="College Events" class="image">
+            </div>
+            <button class="btn sports-btn">Sports Events</button>
+
+            <div>
+                <img src="https://miro.medium.com/v2/resize:fit:639/1*wWopwRHXQsuwUXAxwdShWw.png" alt="Sports Events" class="image">
+            </div>
+            <button class="btn strikes-btn">Student Strikes</button>
+
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYOcFayltDvrgAcEMFKOCMpTKvhfAr-V_FVg&s " alt="Student Strikes" class="image">
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 EVENTS | Designed with Care
+    </footer>
+</body>
+
+</html>
