@@ -19,12 +19,9 @@
         
         header {
             background-color: #000;
-            /* background: linear-gradient(135deg, #1d6386, #00a8ff); */
             color: white;
             padding: 20px 30px;
             text-align: center;
-            /* max-height: 40px; */
-            /* box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); */
         }
         
         header h1 {
@@ -109,71 +106,60 @@
         }
         
         .navbar {
-    display: flex;
-    gap: 70px;
-    /* font-size: 25px; */
-    background-color: #333;
-    font-family: 'Space Grotesk', sans-serif;
-}
+            display: flex;
+            gap: 70px;
+            background-color: #333;
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-}
-.navbar a.active,
-.navbar a:hover {
-    background: #00a8ff;
-    color: #000;
-}
-        
-        /* .menu {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-family: 'Times New Roman', Times, serif;
-            z-index: 1;
-        }
-        
-        .menu-icon {
-            font-size: 30px;
-            cursor: pointer;
-        }
-        
-        .menu-items {
-            display: none;
-            background: #333;
-            color: white;
-            position: absolute;
-            top: 40px;
-            left: 0;
-            list-style: none;
-            padding: 0;
-            width: 150px;
-        }
-        
-        .menu-items .close-icon {
-            text-align: right;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            background: #444444;
-        }
-        
-        .menu-items li {
-            padding: 10px;
-            border-bottom: 1px solid #555;
-        }
-        
-        .menu-items li a {
+        .navbar a {
             color: white;
             text-decoration: none;
-            display: block;
+            padding: 10px 15px;
         }
-        
-        .menu-items li:hover {
-            background: #555;
-        } */
+        .navbar a.active,
+        .navbar a:hover {
+            background: #00a8ff;
+            color: #000;
+        }
+
+        /* Styles for the form */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            background-color: #00a8ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #008bbf;
+        }
+
+        .submitted-details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -193,24 +179,6 @@
         </nav>
     </header>
 
-    <!-- <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-            }
-        }
-
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("menu");
-            var menuIcon = document.querySelector(".menu-icon");
-            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-                menu.style.display = "none";
-            }
-        });
-    </script> -->
     <section>
         <h2>Student Support Services</h2>
         <div class="support-container">
@@ -219,6 +187,24 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbOEi3IIeRrCwNm2kC-u13xS3RyucWME29Ng&s" alt="Lost and Found">
                 <h3>Lost and Found</h3>
                 <p>Report or retrieve items you've misplaced via the <strong>"Missed Things"</strong> section.</p>
+                <form id="lost-item-form">
+                    <div class="form-group">
+                        <label for="item-name">Item Name:</label>
+                        <input type="text" id="item-name" name="item-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="item-description">Description:</label>
+                        <textarea id="item-description" name="item-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-info">Your Contact Info:</label>
+                        <input type="text" id="contact-info" name="contact-info" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                <div id="submitted-details" class="submitted-details"></div>
             </div>
             <!-- Hostel Support -->
             <div class="support-item">
@@ -236,6 +222,28 @@
     <footer>
         &copy; 2025 Student Support | Designed with 💚 by HANCE<a href="#">Team HANCE</a>
     </footer>
+
+    <script>
+        document.getElementById('lost-item-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const itemName = document.getElementById('item-name').value;
+            const itemDescription = document.getElementById('item-description').value;
+            const contactInfo = document.getElementById('contact-info').value;
+
+            // Create a new div to display the submitted details
+            const submittedDetailsDiv = document.getElementById('submitted-details');
+            submittedDetailsDiv.innerHTML = `
+                <h4>Submitted Details:</h4>
+                <p><strong>Item Name:</strong> ${itemName}</p>
+                <p><strong>Description:</strong> ${itemDescription}</p>
+                <p><strong>Contact Info:</strong> ${contactInfo}</p>
+            `;
+            
+            // Optionally, you can reset the form after submission
+            this.reset();
+        });
+    </script>
 </body>
 
 </html>
