@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Features</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+            color: #333;
+        }
+        
+        header {
+            /* background: linear-gradient(135deg, #1d6386, #00a8ff); */
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #000;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        section {
+            padding: 50px 20px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #00a8ff;
+            font-weight: bold;
+        }
+        .navbar {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+        
+        section {
+            padding: 50px 20px;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff, #f9f9f9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card img {
+            width: 80%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-btn {
+            background: #00a8ff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #00a8ff;
+            color: white;
+            font-size: 1.1em;
+        }
+        
+        /* .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            z-index: 1;
+        }
+        
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .menu-items {
+            display: none;
+            background: #333;
+            color: white;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            list-style: none;
+            padding: 0;
+            width: 150px;
+        }
+        
+        .menu-items .close-icon {
+            text-align: right;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            background: #444444;
+        }
+        
+        .menu-items li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+        
+        .menu-items li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .menu-items li:hover {
+            background: #555;
+        }
+         */
+        a {
+            text-decoration: none;
+        }
+        .navbar {
+    display: flex;
+    gap: 70px;
+    /* font-size: 25px; */
+    background-color: #333;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+.navbar a.active,
+.navbar a:hover {
+    background: #00a8ff;
+    color: #000;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Essential Features</h1>
+    </header>
+    <!-- <div class="menu">
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+        <ul class="menu-items" id="menu">
+            <li class="close-icon" onclick="toggleMenu()">&times;</li>
+            
+               
+        </ul>
+    </div> -->
+    <header class="navbar">
+        <nav class="navbar">
+            <a href="homePage.html"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="active"><i class="fas fa-star"></i>  Features</a>
+            <a href="Student_Support_1.html"><i class="fas fa-user-graduate"></i>Support</a>
+            <a href="Academic_Support.html"><i class="fas fa-book"></i> Resources</a>
+            <a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="mess_and_food.html"><i class="fas fa-utensils"></i> Mess</a>
+            <a href="Contact_1.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script> -->
+    <section>
+        <h2>Explore the Features</h2>
+        <div class="features-container">
+            <div class="feature-card" onclick="openHolidaysModal()">
+                <img src="https://images.unsplash.com/photo-1517685352821-92cf88aee5a5" alt="Holidays">
+                <h3>Holidays</h3>
+                <p>A comprehensive calendar displaying all public and academic holidays for planning ahead.</p>
+            </div>
+            <div class="feature-card" onclick="openTravelModal()">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Travel Info">
+                <h3>Travel Info</h3>
+                <p>Get updated train and bus timings, routes, and schedules for convenient travel planning.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="holidaysModal">
+        <div class="modal-content">
+            <h2>Public Holidays - <span id="currentYear"></span></h2>
+            <ul id="holidaysList"></ul>
+            <a href="https://www.india.gov.in/calendar" target="_blank">View Full Holiday Calendar</a>
+            <button class="close-btn" onclick="closeHolidaysModal()">Close</button>
+        </div>
+    </div>
+
+    <div class="modal" id="travelModal">
+        <div class="modal-content">
+            <h2>Available Trains & Buses</h2>
+            <ul>
+                <li>Train: Express 123 - 10:00 AM</li>
+                <li>Train: Intercity 456 - 02:30 PM</li>
+                <li>Bus: City Bus 22 - Every 30 mins</li>
+                <li>Bus: Express Coach - 05:00 PM</li>
+            </ul>
+            <button class="close-btn" onclick="closeTravelModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openHolidaysModal() {
+            document.getElementById('holidaysModal').style.display = 'flex';
+            const year = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = year;
+        }
+
+        function closeHolidaysModal() {
+            document.getElementById('holidaysModal').style.display = 'none';
+        }
+
+        function openTravelModal() {
+            document.getElementById('travelModal').style.display = 'flex';
+        }
+
+        function closeTravelModal() {
+            document.getElementById('travelModal').style.display = 'none';
+        }
+    </script>
+    <footer>
+        &copy; 2025 Essential Features | Designed with Care
+    </footer>
+</body>
+
+</html>
