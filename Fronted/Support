@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Support</title>
+    <style>
+        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e8f5e9, #ffffff);
+            color: #333;
+        }
+        
+        header {
+            background-color: #000;
+            /* background: linear-gradient(135deg, #1d6386, #00a8ff); */
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            /* max-height: 40px; */
+            /* box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); */
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        section {
+            padding: 60px 20px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: #00a8ff;
+        }
+        
+        .support-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .support-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .support-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+        
+        .support-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .support-item h3 {
+            margin-bottom: 15px;
+            font-size: 2em;
+            color: #00a8ff;
+        }
+        
+        .support-item p,
+        .support-item ul {
+            font-size: 1.2em;
+            color: #555;
+        }
+        
+        .support-item ul {
+            list-style: disc;
+            padding-left: 25px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #00a8ff;
+            color: white;
+            font-size: 1.2em;
+        }
+        
+        footer a {
+            color: #00a8ff;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .navbar {
+    display: flex;
+    gap: 70px;
+    /* font-size: 25px; */
+    background-color: #333;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+.navbar a.active,
+.navbar a:hover {
+    background: #00a8ff;
+    color: #000;
+}
+        
+        /* .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            z-index: 1;
+        }
+        
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .menu-items {
+            display: none;
+            background: #333;
+            color: white;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            list-style: none;
+            padding: 0;
+            width: 150px;
+        }
+        
+        .menu-items .close-icon {
+            text-align: right;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            background: #444444;
+        }
+        
+        .menu-items li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+        
+        .menu-items li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .menu-items li:hover {
+            background: #555;
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Student Support</h1>
+    </header>
+    <header class="navbar">
+        <nav class="navbar">
+            <a href="homePage.html"><i class="fas fa-home"></i> Home</a>
+            <a href="Essential_Features_1.html"><i class="fas fa-star"></i>  Features</a>
+            <a href="#" class="active"><i class="fas fa-user-graduate"></i>Support</a>
+            <a href="Academic_Support.html"><i class="fas fa-book"></i> Resources</a>
+            <a href="Events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="mess_and_food.html"><i class="fas fa-utensils"></i> Mess</a>
+            <a href="Contact_1.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("menu");
+            var menuIcon = document.querySelector(".menu-icon");
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script> -->
+    <section>
+        <h2>Student Support Services</h2>
+        <div class="support-container">
+            <!-- Lost and Found -->
+            <div class="support-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbOEi3IIeRrCwNm2kC-u13xS3RyucWME29Ng&s" alt="Lost and Found">
+                <h3>Lost and Found</h3>
+                <p>Report or retrieve items you've misplaced via the <strong>"Missed Things"</strong> section.</p>
+            </div>
+            <!-- Hostel Support -->
+            <div class="support-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSooqHgLvE-dsw6aBPhzhNuqTs81831RYCuLA&s" alt="Hostel Support">
+                <h3>Hostel Support</h3>
+                <ul>
+                    <li>Submit complaints or requests regarding hostel problems.</li>
+                    <li>Find contact details for your hostel warden.</li>
+                    <li><strong>Hostel Warden Name:</strong> Kishore</li>
+                    <li><strong>Phone Number:</strong> 8833445522</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Student Support | Designed with 💚 by HANCE<a href="#">Team HANCE</a>
+    </footer>
+</body>
+
+</html>
