@@ -265,12 +265,15 @@
     <div class="modal" id="travelModal">
         <div class="modal-content">
             <h2>Available Trains & Buses</h2>
-            <ul>
-                <li>Train: Express 123 - 10:00 AM</li>
-                <li>Train: Intercity 456 - 02:30 PM</li>
-                <li>Bus: City Bus 22 - Every 30 mins</li>
-                <li>Bus: Express Coach - 05:00 PM</li>
+            <ul id="ticketList">
+                <li>Train: Express 123 - 10:00 AM <button onclick="buyTicket('Express 123')">Buy</button></li>
+                <li>Train: Intercity 456 - 02:30 PM <button onclick="buyTicket('Intercity 456')">Buy</button></li>
+                <li>Bus: City Bus 22 - Every 30 mins <button onclick="buyTicket('City Bus 22')">Buy</button></li>
+                <li>Bus: Express Coach - 05:00 PM <button onclick="buyTicket('Express Coach')">Buy</button></li>
             </ul>
+            <h3>Add New Ticket</h3>
+            <input type="text" id="newTicket" placeholder="Enter ticket details (e.g., Train: XYZ - 03:00 PM)">
+            <button onclick="addTicket()">Submit</button>
             <button class="close-btn" onclick="closeTravelModal()">Close</button>
         </div>
     </div>
@@ -292,7 +295,40 @@
 
         function closeTravelModal() {
             document.getElementById('travelModal').style.display = 'none';
-        }
+        }let tickets = [
+    { name: 'Express 123', time: '10:00 AM' },
+    { name: 'Intercity 456', time: '02:30 PM' },
+    { name: 'City Bus 22', time: 'Every 30 mins' },
+    { name: 'Express Coach', time: '05:00 PM' }
+];
+
+function updateTicketList() {
+    const ticketList = document.getElementById('ticketList');
+    ticketList.innerHTML = '';
+    tickets.forEach(ticket => {
+        const li = document.createElement('li');
+        li.innerHTML = `${ticket.name} - ${ticket.time} <button onclick="buyTicket('${ticket.name}')">Buy</button>`;
+        ticketList.appendChild(li);
+    });
+}
+
+function addTicket() {
+    const newTicketInput = document.getElementById('newTicket');
+    const ticketDetails = newTicketInput.value;
+    if (ticketDetails) {
+        const [name, time] = ticketDetails.split(' - ');
+        tickets.push({ name, time });
+        newTicketInput.value = '';
+        updateTicketList();
+    } else {
+        alert('Please enter valid ticket details.');
+    }
+}
+
+function buyTicket(ticketName) {
+    alert(`You have purchased a ticket for ${ticketName}.`);
+}
+        
     </script>
     <footer>
         &copy; 2025 Essential Features | Designed with Care
