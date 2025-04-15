@@ -1,0 +1,139 @@
+  
+body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(90deg, rgb(185, 66, 185), rgb(238, 61, 158));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .signup-container {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      width: 360px;
+    }
+
+    .signup-container h1 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .signup-container p {
+      color: #666;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-control{width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .signup-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .signup-container button:hover {
+      background-color: #0056b3;
+    }
+
+    .remember-me {
+      display: flex;
+      flex-direction: row;
+    }  
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .divider hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+
+    .divider span {
+      margin: 0 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .access-quickly {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .access-quickly button {
+      background-color: #f1f3f4;
+      color: #444;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      flex: 1;
+      margin: 0 5px;
+    }
+
+    .access-quickly button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .signin-link {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .signin-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+    .fa-facebook{
+      color:blue;
+      font-size:35px;
+    }
+    .fa-linkedin{
+      color: blue;
+      font-size:35px;
+
+    }
+    .forgot-password{
+      padding-left:8px;
+      padding-bottom:5px;
+      font-size:15px;
+      display:grid;
+      justify-content: end;}
+    .forgot-password a{
+      text-decoration: none;     
+
+
+    }
+
+    
+    .forgot-password a:hover{
+      text-decoration: underline;
+    }
