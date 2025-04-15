@@ -1,0 +1,15 @@
+{
+    "hosting": {
+        "site": "hance-c177b-53e6e",
+        "public": "public",
+        "rewrites": [{
+                "source": "/**",
+                "destination": "/homePage.html"
+            },
+            {
+                "source": "/homePage",
+                "destination": "/homePage.html"
+            }
+        ]
+    }
+}
