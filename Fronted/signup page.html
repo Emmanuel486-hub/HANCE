@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+ <link rel="stylesheet" href="signup style.css">
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Sign up</h1>
+    <p>Sign up to continue</p>
+    <form>
+      <input class="form-control" type="text" placeholder="Name" required>
+      <input class="form-control" type="email" placeholder="Email" required>
+      <input class="form-control" type="password" placeholder="Password" required>
+      <div class="forgot-password">
+        <a href="https://accounts.google.com/signin/v2/recoveryidentifier" target="_blank" style="color:rgb(85, 85, 252);">forgot password</a>
+      </div>
+      <button type="submit">Sign up</button>
+    </form>
+    <div class="divider">
+      <hr>
+      <span>or continue with</span>
+      <hr>
+    </div>
+    <div class="access-quickly">
+      <!-- Google Sign-In -->
+      <a href="https://accounts.google.com/signin/v2/identifier" target="_blank">
+        <button>
+          <img style="width: 30px; height: 30px;" src="google.png" alt="Google">
+        </button>
+      </a>
+      <!-- LinkedIn Sign-In -->
+      <a href="https://www.linkedin.com/login" target="_blank">
+        <button>
+          <i class="fa-brands fa-linkedin"></i>
+        </button>
+      </a>
+      <!-- Facebook Sign-In -->
+      <a href="https://www.facebook.com/login" target="_blank">
+        <button>
+          <i class="fa-brands fa-facebook"></i>
+        </button>
+      </a>
+    </div>
+    <p class="signin-link">
+      Already have an account? <a href="login page.html">login</a>
+    </p>
+  </div>
+</body>
+</html>
